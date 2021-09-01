@@ -1,0 +1,71 @@
+$base-color: #f4f2f9;
+$hover-color: #cec1e7;
+$highlight-color: #2E8B57;
+$header-footer-color: #033E3E;
+
+
+body {
+    background-color: #f3effc;
+
+
+    .ui-table {
+        text-align: center;
+
+        .ui-table-thead, .ui-table-tfoot {
+            & > tr > th {
+                font-weight: bold;
+                font-size: 16px;
+                background-color: $header-footer-color;
+                color: white;
+            }
+        }
+
+        .ui-table-tbody > tr {
+            background-color:	#E5E4E2;
+
+            &:nth-child(odd) {
+                background-color: #FFFFFF;
+
+                &.ui-state-highlight {
+                    background-color: $highlight-color;
+                }
+            }
+
+            &.ui-state-highlight {
+                background-color: $highlight-color;
+            }
+        }
+
+        &.ui-table-hoverable-rows .ui-table-tbody > tr.ui-selectable-row:not(.ui-state-highlight):not(.ui-contextmenu-selected):hover {
+            background-color: $base-color;
+        }
+
+        .ui-paginator {
+            background-color: $header-footer-color;
+            border-color: $header-footer-color;
+
+            .ui-paginator-pages a {
+                &.ui-state-active {
+                    background-color: $highlight-color;
+                }
+
+                &:not(.ui-state-active):hover {
+                    background-color: $hover-color;
+                }
+            }
+
+            & > a:not(.ui-state-disabled):not(.ui-state-active):hover {
+                background-color: $hover-color;
+            }
+        }
+    }
+}
+
+.card, .layout-container .layout-breadcrumb, .ui-scrollpanel-content {
+    background-color: $base-color;
+}
+
+.text-align-center {
+    text-align: center;
+    
+}

@@ -1,0 +1,55 @@
+<p-panel>
+    <h2 class="texto"> TIPO DE PROPOSIÇÕES</h2>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <button type="button" (click)=" abrirCadastro()" pButton icon="pi pi-check" label="Criar"></button>
+        </div>
+        <div class="p-col-11">
+            <p-table [columns]="colunas" selectionMode="single" [(selection)]="tipoProposicaoData"
+                [value]=" tipoProposicao" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+                <ng-template class="tabela" pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="p-col-1">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <button type="button" (click)="abrirEdicao()" pButton icon="pi pi-check" label="Editar"></button>
+                </div>
+                <div class="p-col-12">
+                    <button type="button" (click)="abrirListagem()" pButton icon="pi pi-check" label="Listar"></button>
+                </div>
+                <div class="p-col-12">
+                    <button type="button" (click)= "abrirDeletar()" pButton icon="pi pi-check" label="Deletar"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-panel>
+<p-dialog header="CRIAR TIPO DE PROPOSIÇÃO" [(visible)]="cadastroAberto">
+    <app-forms></app-forms>
+</p-dialog>
+<p-dialog header= "EDITAR TIPO DE PROPOSIÇÃO" [(visible)]="edicaoAberta">
+    <app-editar [tipoProposicao] = "tipoProposicaoData" *ngIf = "edicaoAberta"></app-editar>
+</p-dialog>
+<p-dialog header= "LISTAR TIPO DE PROPOSIÇÃO" [(visible)]= "listagemAberta">
+    <app-listar [tipoProposicao] = "tipoProposicaoData"></app-listar>
+</p-dialog>
+<p-dialog header = "MENSAGEM" [(visible)]= "deletarAberto">
+    <app-deletar [tipoProposicao] = "tipoProposicaoData" *ngIf = "deletarAberto"></app-deletar>
+</p-dialog>
+
+
